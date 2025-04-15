@@ -3,39 +3,45 @@ import joblib
 import re
 import string
 
-# Page setup
+# Page config
 st.set_page_config(page_title="Fake News Detector", layout="wide")
 
-# Load the saved model and vectorizer
+# Load model and vectorizer
 model = joblib.load("model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
-# Optional: Minimal custom CSS for cleaner design
+# Custom CSS styling
 st.markdown(
     """
     <style>
     .stTextArea textarea {
-        background-color: #f8f9fa;
+        background-color: #f1f3f5;
         font-size: 16px;
         color: #212529;
     }
-    .main-header {
-        font-size: 36px;
-        font-weight: 600;
-        color: #1c1c1c;
-        margin-bottom: 0;
+    .title {
+        font-size: 38px;
+        font-weight: bold;
+        color: #1c1c1e;
+        margin-bottom: 0px;
     }
-    .sub-header {
+    .tagline {
         font-size: 18px;
-        color: #6c757d;
-        margin-top: 0;
+        color: #5c5c5c;
+        margin-top: 5px;
+    }
+    .footer {
+        font-size: 13px;
+        color: #aaaaaa;
+        margin-top: 50px;
+        text-align: center;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Text cleaning function
+# Text preprocessing
 def clean_text(text):
     text = text.lower()
     text = re.sub(r'\[.*?\]', '', text)
@@ -46,27 +52,30 @@ def clean_text(text):
     text = re.sub(r'\w*\d\w*', '', text)
     return text
 
-# Header
-st.markdown('<p class="main-header">Fake News Detection System</p>', unsafe_allow_html=True)
-st.markdown('<p class="sub-header">Use AI to identify whether a news article is Real or Fake.</p>', unsafe_allow_html=True)
+# --- UI Starts ---
+
+# Logo + Header
+st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Breaking_news.svg/640px-Breaking_news.svg.png", width=150)
+st.markdown('<p class="title">Fake News Detection System</p>', unsafe_allow_html=True)
+st.markdown('<p class="tagline">Using machine learning to help verify the truth — instantly.</p>', unsafe_allow_html=True)
 st.write("---")
 
-# Layout
+# Layout: Input & Tips side by side
 col1, col2 = st.columns([2, 1])
 
 with col1:
-    text_input = st.text_area("Paste a news article or headline:", height=200)
+    text_input = st.text_area("📝 Paste your news article or headline here:", height=200)
 
 with col2:
-    st.markdown("#### Guidelines")
-    st.markdown("- Use clear, concise text.")
-    st.markdown("- Avoid emojis, links, or non-news content.")
-    st.markdown("- Suitable for headlines or short articles.")
+    st.markdown("#### 🧠 Quick Tips")
+    st.markdown("- Use complete headlines or article excerpts.")
+    st.markdown("- Avoid emojis, links, or gibberish.")
+    st.markdown("- The model works best on English news content.")
 
 st.write("")
 
-# Prediction
-if st.button("Analyze"):
+# Prediction button + result
+if st.button("🔍 Analyze"):
     if text_input.strip() == "":
         st.warning("Please enter some content to analyze.")
     else:
@@ -75,9 +84,10 @@ if st.button("Analyze"):
         result = model.predict(vect)[0]
 
         if result == 1:
-            st.success("Result: This article is likely **REAL**.")
+            st.success("✅ This article is likely **REAL**.")
+            st.balloons()
         else:
-            st.error("Result: This article is likely **FAKE**.")
+            st.error("🚨 This article is likely **FAKE**.")
 
-# Clean footer line
-st.write("---")
+# Footer (you can customize this message if needed)
+st.markdown('<div class="footer">This tool is for educational purposes only and may not be 100% accurate.</div>', unsafe_allow_html=True)

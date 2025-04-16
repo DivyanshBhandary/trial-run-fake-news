@@ -22,12 +22,12 @@ st.markdown(
     .title {
         font-size: 38px;
         font-weight: bold;
-        color: #0c0c0c;  /* darker for visibility */
+        color: #0c0c0c;
         margin-bottom: 0px;
     }
     .tagline {
         font-size: 18px;
-        color: #333333;  /* medium gray for good contrast */
+        color: #333333;
         margin-top: 5px;
     }
     .footer {
@@ -41,7 +41,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Text preprocessing
+# Text cleaning function
 def clean_text(text):
     text = text.lower()
     text = re.sub(r'\[.*?\]', '', text)
@@ -89,5 +89,5 @@ if st.button("🔍 Analyze"):
         else:
             st.error("🚨 This article is likely **FAKE**.")
 
-# Footer (you can customize this message if needed)
+# Footer
 st.markdown('<div class="footer">This tool is for educational purposes only and may not be 100% accurate.</div>', unsafe_allow_html=True)

@@ -4,7 +4,7 @@ import re
 import string
 
 # Page config
-st.set_page_config(page_title="Fake News Detector", layout="wide")
+st.set_page_config(page_title="HearSay", layout="wide")
 
 # Load model and vectorizer
 model = joblib.load("model.pkl")
@@ -63,8 +63,8 @@ def clean_text(text):
 
 # Logo + Header
 st.image("hearsay.png", width=150)
-st.markdown('<p class="title">Fake News Detection System</p>', unsafe_allow_html=True)
-st.markdown('<p class="tagline">Using machine learning to help verify the truth — instantly.</p>', unsafe_allow_html=True)
+st.markdown('<p class="title">HearSay</p>', unsafe_allow_html=True)
+st.markdown('<p class="tagline">Because rumors need receipt.</p>', unsafe_allow_html=True)
 st.write("---")
 
 # Layout: Input & Tips side by side

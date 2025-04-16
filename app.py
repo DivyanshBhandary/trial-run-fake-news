@@ -22,17 +22,17 @@ st.markdown(
     .title {
         font-size: 38px;
         font-weight: bold;
-        color: #1c1c1e;
+        color: #0c0c0c;  /* darker for visibility */
         margin-bottom: 0px;
     }
     .tagline {
         font-size: 18px;
-        color: #5c5c5c;
+        color: #333333;  /* medium gray for good contrast */
         margin-top: 5px;
     }
     .footer {
         font-size: 13px;
-        color: #aaaaaa;
+        color: #555555;
         margin-top: 50px;
         text-align: center;
     }

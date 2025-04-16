@@ -55,7 +55,7 @@ def clean_text(text):
 # --- UI Starts ---
 
 # Logo + Header
-st.image("flat-newspaper-news-round-icon-701751695035110ggaeu2amu9.png", width=150)
+st.image("flat-newspaper-news-round-icon-701751695035110ggaeu2amu9 (2).png", width=150)
 st.markdown('<p class="title">Fake News Detection System</p>', unsafe_allow_html=True)
 st.markdown('<p class="tagline">Using machine learning to help verify the truth — instantly.</p>', unsafe_allow_html=True)
 st.write("---")

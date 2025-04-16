@@ -14,25 +14,32 @@ vectorizer = joblib.load("vectorizer.pkl")
 st.markdown(
     """
     <style>
+    body {
+        background-color: #1e1e1e;
+    }
+    .main {
+        background-color: #1e1e1e;
+        color: white;
+    }
     .stTextArea textarea {
-        background-color: #f1f3f5;
+        background-color: #2c2c2c;
         font-size: 16px;
-        color: #212529;
+        color: white;
     }
     .title {
         font-size: 38px;
         font-weight: bold;
-        color: #0c0c0c;
+        color: white;
         margin-bottom: 0px;
     }
     .tagline {
         font-size: 18px;
-        color: #333333;
+        color: white;
         margin-top: 5px;
     }
     .footer {
         font-size: 13px;
-        color: #555555;
+        color: #bbbbbb;
         margin-top: 50px;
         text-align: center;
     }
